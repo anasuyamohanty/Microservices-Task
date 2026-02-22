@@ -32,8 +32,11 @@ Order:
 http://localhost:3002/orders
 
 Gateway:
+
 http://localhost:3003/api/users
+
 http://localhost:3003/api/products
+
 http://localhost:3003/api/orders
 
 
