@@ -14,6 +14,6 @@ app.get('/users', (req, res) => {
   res.json(users);
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`User service running on port ${port}`);
 });

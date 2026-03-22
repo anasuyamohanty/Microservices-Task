@@ -14,6 +14,6 @@ app.get('/products', (req, res) => {
   res.json(products);
 });
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
   console.log(`Product service running on port ${port}`);
 });

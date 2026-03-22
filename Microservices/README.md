@@ -1,35 +1,32 @@
-# Microservices Docker Assignment
+# Kubernetes Microservices Deployment
 
 ## Overview
-This project containerizes four Node.js microservices using Docker and Docker Compose.
+This project demonstrates deployment of a Node.js microservices application on Kubernetes using Minikube.  
+The application includes User, Product, Order, and Gateway services.
 
-## Services
-- User Service – Port 3000
-- Product Service – Port 3001
-- Order Service – Port 3002
-- Gateway Service – Port 3003
+---
 
-## Setup Instructions
+## Minikube Setup
 
-1. Clone repository:
-   git clone <repo-link>
+Start Minikube:
 
-2. Navigate to project:
-   cd Microservices
+```bash
+minikube start
+```
 
-3. Build and run:
-   docker compose up --build
+Verify cluster:
 
-## Testing Endpoints
+```bash
+kubectl get nodes
+```
 
-User:
-http://localhost:3000/users
+Configure Docker to use Minikube:
 
-Product:
-http://localhost:3001/products
+```bash
+eval $(minikube docker-env)
+```
 
-Order:
-http://localhost:3002/orders
+Build Docker images inside Minikube:
 
 Gateway:
 
@@ -39,6 +36,100 @@ http://localhost:3003/api/products
 
 http://localhost:3003/api/orders
 
+```bash
+docker compose build
+```
+
+---
+
+## Deployment Steps
+
+Navigate to Kubernetes folder:
+
+```bash
+cd k8s
+```
+
+Deploy all services:
+
+```bash
+kubectl apply -f .
+```
+
+---
+
+## Verify Deployment
+
+Check running pods:
+
+```bash
+kubectl get pods
+```
+
+Check services:
+
+```bash
+kubectl get svc
+```
+
+---
+
+## Service Testing
+
+### Using Port Forward
+
+Forward gateway service:
+
+```bash
+kubectl port-forward svc/gateway-service 3003:3003
+```
+
+Test in browser:
+
+- http://localhost:3003/api/users  
+- http://localhost:3003/api/products  
+- http://localhost:3003/api/orders  
+
+---
+
+### Internal Service Communication
+
+Services communicate using Kubernetes DNS:
+
+- http://user-service:3000  
+- http://product-service:3001  
+- http://order-service:3002  
+
+---
+
+## Troubleshooting
+
+Check pod status:
+
+```bash
+kubectl get pods
+```
+
+View logs:
+
+```bash
+kubectl logs <pod-name>
+```
+
+Describe pod:
+
+```bash
+kubectl describe pod <pod-name>
+```
+
+Restart pod:
+
+```bash
+kubectl delete pod <pod-name>
+```
+
+---
+(Skill Test - 2 : Completed microservices deployment using Docker and Kubernetes with Minikube)
 
 ## Screenshots
 ## Testing
@@ -66,4 +157,24 @@ d. Gateway-service:
 •	http://localhost:3003/api/orders
  <img width="657" height="298" alt="image" src="https://github.com/user-attachments/assets/57f724d7-74ca-408b-8402-e6393a62cdc1" />
 
+
+Include the following screenshots:
+
+1. Running Pods  
+   - Output of: `kubectl get pods`
+
+2. Service Logs  
+   - Output of: `kubectl logs <gateway-pod>`
+
+3. API Testing  
+   - Browser results of:
+     - /api/users  
+     - /api/products  
+     - /api/orders  
+
+---
+
+## Conclusion
+
+The microservices application was successfully deployed on Kubernetes using Minikube, with proper service communication and API testing.
 
