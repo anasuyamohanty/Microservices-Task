@@ -157,20 +157,27 @@ d. Gateway-service:
 •	http://localhost:3003/api/orders
  <img width="657" height="298" alt="image" src="https://github.com/user-attachments/assets/57f724d7-74ca-408b-8402-e6393a62cdc1" />
 
-
-Include the following screenshots:
-
 1. Running Pods  
    - Output of: `kubectl get pods`
+     <img width="940" height="270" alt="image" src="https://github.com/user-attachments/assets/e7e67535-010b-464a-9224-f0728f3f7b61" />
+
 
 2. Service Logs  
    - Output of: `kubectl logs <gateway-pod>`
+     <img width="940" height="268" alt="image" src="https://github.com/user-attachments/assets/97c6c29d-f319-4e80-80a0-0746debc19d7" />
+
 
 3. API Testing  
    - Browser results of:
-     - /api/users  
-     - /api/products  
-     - /api/orders  
+     - /api/users
+       <img width="940" height="406" alt="image" src="https://github.com/user-attachments/assets/46d56df5-83a7-46c0-8c34-3438fcbe1ad4" />
+
+     - /api/products
+       <img width="882" height="522" alt="image" src="https://github.com/user-attachments/assets/8397c4f7-10f2-4b0e-b997-6efa54d23e51" />
+
+     - /api/orders
+       <img width="829" height="264" alt="image" src="https://github.com/user-attachments/assets/aacf1129-2541-489e-930d-6d4e349293a6" />
+
 
 ---
 
